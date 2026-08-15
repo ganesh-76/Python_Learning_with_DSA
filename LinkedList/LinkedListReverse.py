@@ -109,6 +109,19 @@ class LinkedList:
         self.length -= 1
         return temp
 
+    def reverse(self):
+        temp = self.head
+        self.head = self.tail
+        self.tail = temp
+        after = temp.next
+        before = None
+        for _ in range(self.length):
+            after = temp.next
+            temp.next = before
+            before = temp
+            temp = after
+
+
 
 my_linked_list = LinkedList(0)
 my_linked_list.append(1)
@@ -117,5 +130,5 @@ my_linked_list.append(3)
 my_linked_list.append(4)
 
 my_linked_list.print_linked_list()
-print(f'Removing the note at given position {my_linked_list.remove(3)}, new LinkedList is as below')
+print(f'Reversed the Linked list  {my_linked_list.reverse()}, Reversed LinkedList is as below')
 my_linked_list.print_linked_list()
